@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<style>
+.choice {
+  height: 400px;
+  display: inline-block;
+  width: 100px;
+}
+
+.result {
+  height: 330px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.bar {
+  height: 0%;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.bar[data-choice="1"] {
+  background-color: red;
+}
+
+.bar[data-choice="2"] {
+  background-color: green;
+}
+
+.bar[data-choice="3"] {
+  background-color: blue;
+}
+
+.label {
+  height: 70px;
+  text-align: center;
+}
+</style>
+</head>
+
+
+<body>
+
+<h1> JS Poll</h1>
+
+
+
+
+
+<div id="choices">
+  <div class="choice">
+    <div class="result">
+      <div class="bar" data-choice="1"></div>
+    </div>
+    <div class="label">
+      <p>16 se ayge</p>
+      <button data-choice="1">Vote</button>
+    </div>
+  </div>
+  <div class="choice">
+    <div class="result">
+      <div class="bar" data-choice="2"></div>
+    </div>
+    <div class="label">
+      <p>23 se ayge</p>
+      <button data-choice="2">Vote</button>
+    </div>
+  </div>
+  <div class="choice">
+    <div class="result">
+      <div class="bar" data-choice="3"></div>
+    </div>
+    <div class="label">
+      <p>me to jauga/i tum bhaad me jao</p>
+      <button data-choice="3">Vote</button>
+    </div>
+  </div>
+</div>
+
+
+<script>
+var buttons = document.querySelectorAll(".choice button"),
+  tally = {
+    1: 0,
+    2: 0,
+    3: 0,
+    total: 0
+  };
+
+function vote(choice) {
+  tally[choice]++;
+  tally["total"]++;
+  console.log(tally);
+  window.location = "https://github.com/ashutosh7i";
+}
+
+function barPercentage(node, tally) {
+  var choice = node.dataset.choice;
+  
+  if (tally[choice])
+    return tally[choice]/tally["total"] * 100;
+  return 0;
+}
+
+function renderBars() {
+  var bars = document.getElementsByClassName("bar");
+  
+  for (var i = 0; i < bars.length; i++) {
+    var percentage = barPercentage(bars[i], tally);
+    console.log(percentage)
+    bars[i].style.height = percentage.toString() + "%";
+  }
+}
+
+function setup() {
+  // Set up event listeners
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener("click", function(e) {
+      vote(e.target.dataset["choice"]);
+      renderBars();
+    });
+  }
+  
+  renderBars();
+}
+
+setup();
+</script>
+
+</body>
+</html> 
