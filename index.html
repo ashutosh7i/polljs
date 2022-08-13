@@ -2,133 +2,217 @@
 <html>
 
 <head>
-<style>
-.choice {
-  height: 400px;
-  display: inline-block;
-  width: 100px;
-}
-
-.result {
-  height: 330px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-
-.bar {
-  height: 0%;
-  width: 70%;
-  margin: 0 auto;
-}
-
-.bar[data-choice="1"] {
-  background-color: red;
-}
-
-.bar[data-choice="2"] {
-  background-color: green;
-}
-
-.bar[data-choice="3"] {
-  background-color: blue;
-}
-
-.label {
-  height: 70px;
-  text-align: center;
-}
-</style>
+    <style>
+        .choice {
+            height: 400px;
+            display: inline-block;
+            width: 100px;
+        }
+        
+        .result {
+            height: 330px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        
+        .bar {
+            height: 0%;
+            width: 70%;
+            margin: 0 auto;
+        }
+        
+        .bar[data-choice="1"] {
+            background-color: red;
+        }
+        
+        .bar[data-choice="2"] {
+            background-color: green;
+        }
+        
+        .bar[data-choice="3"] {
+            background-color: blue;
+        }
+        
+        .label {
+            height: 70px;
+            text-align: center;
+        }
+    </style>
 </head>
 
 
 <body>
 
-<h1> JS Poll</h1>
+    <h1> JS Poll</h1>
 
 
 
 
 
-<div id="choices">
-  <div class="choice">
-    <div class="result">
-      <div class="bar" data-choice="1"></div>
+    <div id="choices">
+        <div class="choice">
+            <div class="result">
+                <div class="bar" data-choice="1"></div>
+            </div>
+            <div class="label">
+                <p>16 se ayge</p>
+                <button data-choice="1">Vote</button>
+            </div>
+        </div>
+        <div class="choice">
+            <div class="result">
+                <div class="bar" data-choice="2"></div>
+            </div>
+            <div class="label">
+                <p>23 se ayge</p>
+                <button data-choice="2">Vote</button>
+            </div>
+        </div>
+        <div class="choice">
+            <div class="result">
+                <div class="bar" data-choice="3"></div>
+            </div>
+            <div class="label">
+                <p>me to jauga/i tum bhaad me jao</p>
+                <button data-choice="3">Vote</button>
+            </div>
+        </div>
     </div>
-    <div class="label">
-      <p>16 se ayge</p>
-      <button data-choice="1">Vote</button>
-    </div>
-  </div>
-  <div class="choice">
-    <div class="result">
-      <div class="bar" data-choice="2"></div>
-    </div>
-    <div class="label">
-      <p>23 se ayge</p>
-      <button data-choice="2">Vote</button>
-    </div>
-  </div>
-  <div class="choice">
-    <div class="result">
-      <div class="bar" data-choice="3"></div>
-    </div>
-    <div class="label">
-      <p>me to jauga/i tum bhaad me jao</p>
-      <button data-choice="3">Vote</button>
-    </div>
-  </div>
-</div>
 
 
-<script>
-var buttons = document.querySelectorAll(".choice button"),
-  tally = {
-    1: 0,
-    2: 0,
-    3: 0,
-    total: 0
-  };
 
-function vote(choice) {
-  tally[choice]++;
-  tally["total"]++;
-  console.log(tally);
-  window.location = "https://github.com/ashutosh7i";
-}
 
-function barPercentage(node, tally) {
-  var choice = node.dataset.choice;
-  
-  if (tally[choice])
-    return tally[choice]/tally["total"] * 100;
-  return 0;
-}
 
-function renderBars() {
-  var bars = document.getElementsByClassName("bar");
-  
-  for (var i = 0; i < bars.length; i++) {
-    var percentage = barPercentage(bars[i], tally);
-    console.log(percentage)
-    bars[i].style.height = percentage.toString() + "%";
-  }
-}
 
-function setup() {
-  // Set up event listeners
-  for (var i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener("click", function(e) {
-      vote(e.target.dataset["choice"]);
-      renderBars();
-    });
-  }
-  
-  renderBars();
-}
+    <script>
+        var buttons = document.querySelectorAll(".choice button"),
+            tally = {
+                1: 0,
+                2: 0,
+                3: 0,
+                total: 0
+            };
 
-setup();
-</script>
+        function vote(choice) {
+            tally[choice]++;
+            tally["total"]++;
+            console.log(tally);
+            window.location = "https://github.com/ashutosh7i";
+        }
+
+        function barPercentage(node, tally) {
+            var choice = node.dataset.choice;
+
+            if (tally[choice])
+                return tally[choice] / tally["total"] * 100;
+            return 0;
+        }
+
+        function renderBars() {
+            var bars = document.getElementsByClassName("bar");
+
+            for (var i = 0; i < bars.length; i++) {
+                var percentage = barPercentage(bars[i], tally);
+                console.log(percentage)
+                bars[i].style.height = percentage.toString() + "%";
+            }
+        }
+
+        function setup() {
+            // Set up event listeners
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].addEventListener("click", function(e) {
+                    vote(e.target.dataset["choice"]);
+                    renderBars();
+                });
+            }
+
+            renderBars();
+        }
+
+        setup();
+    </script>
+    <br/>
+    <br>
+    <br><br/>
+    <br>
+    <br>
+
+
+    <section>
+        <footer>
+
+
+            <div class="ad1">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key': 'ff60086780d8c94815ca62e13c1938a9',
+                        'format': 'iframe',
+                        'height': 60,
+                        'width': 468,
+                        'params': {}
+                    };
+                    document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.effectivecreativeformats.com/ff60086780d8c94815ca62e13c1938a9/invoke.js"></scr' + 'ipt>');
+                </script>
+            </div>
+
+            <div class="ad2">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key': 'bafc8909cf96172de477728bf9afb0e2',
+                        'format': 'iframe',
+                        'height': 90,
+                        'width': 728,
+                        'params': {}
+                    };
+                    document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.effectivecreativeformats.com/bafc8909cf96172de477728bf9afb0e2/invoke.js"></scr' + 'ipt>');
+                </script>
+            </div>
+
+            <div class="ad3">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key': 'fdd29b7fa7a141508eed6dd4ce0e3c95',
+                        'format': 'iframe',
+                        'height': 250,
+                        'width': 300,
+                        'params': {}
+                    };
+                    document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.effectivecreativeformats.com/fdd29b7fa7a141508eed6dd4ce0e3c95/invoke.js"></scr' + 'ipt>');
+                </script>
+            </div>
+
+            <div class="ad4">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key': '212afb8a7d815b4cf2ee44cd31840812',
+                        'format': 'iframe',
+                        'height': 50,
+                        'width': 320,
+                        'params': {}
+                    };
+                    document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.effectivecreativeformats.com/212afb8a7d815b4cf2ee44cd31840812/invoke.js"></scr' + 'ipt>');
+                </script>
+            </div>
+
+            <div class="ad4">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key': 'bf07f06ecc8572dc27a079e2fb77f46a',
+                        'format': 'iframe',
+                        'height': 300,
+                        'width': 160,
+                        'params': {}
+                    };
+                    document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.effectivecreativeformats.com/bf07f06ecc8572dc27a079e2fb77f46a/invoke.js"></scr' + 'ipt>');
+                </script>
+            </div>
+
+        </footer>
+    </section>
+
 
 </body>
-</html> 
+
+</html>
